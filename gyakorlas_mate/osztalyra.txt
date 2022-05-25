@@ -1,0 +1,3 @@
+Janos,32,160,ferfi
+Eszter,26,172,no
+Eva,18,180,no

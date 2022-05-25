@@ -1,0 +1,38 @@
+package gyakorlaasss;
+
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Gyakorlaasss {
+    public static void main(String[] args) {
+
+	// 57.	Generálj 2000 db véletlen számot 1-100 között, majd írd ki a számokat egy külső szöveges fájlba
+
+        fileKiiras(szamGeneralas());
+    }
+    
+    public static ArrayList<Integer> szamGeneralas(){
+        ArrayList<Integer> szamok = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < 2000; i++) {
+            szamok.add(rand.nextInt(100) + 1);
+        }
+        return szamok;
+    }
+
+    public static void fileKiiras(ArrayList<Integer> szamok){
+        try {
+            RandomAccessFile raf = new RandomAccessFile("kiir.txt", "rw");
+            
+            raf.setLength(0);
+            raf.seek(0);
+	    for (int i = 0; i < szamok.size(); i++) {
+                raf.writeBytes(szamok.get(i)+"\n");
+            }
+            
+            raf.close();
+        }catch (IOException e){System.out.println(e);}
+    }
+}
